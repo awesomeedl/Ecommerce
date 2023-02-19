@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Ecommerce_Function": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7039",
+      "launchBrowser": false
+    }
+  }
+}
