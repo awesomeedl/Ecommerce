@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: main
-    paths: ./Ecommerce_Blazor/**
+    paths: Ecommerce_Blazor/**
 
 env:
   PROJECT_NAME: Ecommerce_Blazor
