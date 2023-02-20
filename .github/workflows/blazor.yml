@@ -1,0 +1,21 @@
+name: Deploy Blazor WASM project to Github Pages
+
+on:
+  push:
+    branches: main
+    paths: ./Ecommerce_Blazor/**
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Build
+        run: dotnet publish ./Ecommerce_Blazor/Ecommerce_Blazor.csproj
