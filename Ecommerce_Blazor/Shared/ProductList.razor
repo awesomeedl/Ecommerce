@@ -27,11 +27,8 @@
     private static List<Product> Products = new List<Product>();
     
     protected override async Task OnInitializedAsync()
-    {
-        // var result = await HttpClient.GetFromJsonAsync<List<Product>>("https://ecommercefunction.azurewebsites.net/api/GetProducts");
-        // if (result != null) Products = result;
-        
-        var result = await HttpClient.GetFromJsonAsync<List<Product>>("http://localhost:7071/api/GetProducts");
-        if (result != null) Products = result;
+    {        
+        var result = await HttpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/GetProducts");
+        if (result is {Data: { } }) Products = result.Data;
     }
 }

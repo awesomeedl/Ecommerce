@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Azure.Functions.Extensions;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -14,8 +15,9 @@ public class Startup : FunctionsStartup
 {
     public override void Configure(IFunctionsHostBuilder builder)
     {
-        builder.Services.AddDbContext<DbContext>(
-            options => options.UseSqlServer(Environment.GetEnvironmentVariable(
-                    "SQLAZURECONNSTR_ConnectionString") ?? throw new Exception("Sql connection string not found")));
+        var connectionStr = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_ConnectionString");
+        Debug.Assert(!string.IsNullOrEmpty(connectionStr), "Connection string not found");
+        builder.Services.AddDbContext<DataContext>(
+            options => options.UseSqlServer(connectionStr));
     }
 }
