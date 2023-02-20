@@ -1,14 +1,14 @@
 name: Deploy Blazor WASM project to Github Pages
-
-env:
-  PROJECT_NAME: Ecommerce_Blazor
   
 on:
   workflow_dispatch:
   push:
     branches: main
-    paths: ./${{ env.PROJECT_NAME }}/**
-    
+    paths: ./Ecommerce_Blazor/**
+
+env:
+  PROJECT_NAME: Ecommerce_Blazor
+  
 jobs:
   build:
     runs-on: ubuntu-latest
