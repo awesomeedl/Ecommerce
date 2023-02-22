@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "Ecommerce_Blazor.dll": "sha256-ASJ+4TVm0m4MUxCVsjnZGA6LTbsZ7Rg2nb0\/OBcG778=",
+      "Ecommerce_Blazor.dll": "sha256-wrcFsIP4z6YDsbYEofxUkalN1YytHWo0a8VLotytCwM=",
       "Ecommerce_Model.dll": "sha256-nc93wDmfFSTmr5T5JKXLeZ3VivIc4mvPbLsamKRMcuk=",
       "Microsoft.AspNetCore.Components.dll": "sha256-qgnYYf0e\/UZZ5mwNd+6Xbaw0OMupRGY3lyEXs5z5qSA=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-MK5hTsPUtMuaooTT118KEbPah5KyemzRYx7045\/rPmw=",
