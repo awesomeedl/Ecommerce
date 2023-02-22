@@ -16,10 +16,15 @@ public class ProductService : IProductService
     
     public async Task GetProducts()
     {
-        var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("");
+        var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("https://ecommercefunction.azurewebsites.net/api/product/");
         if (result is { Data: { } })
         {
             Products = result.Data;
         }
+    }
+
+    public async Task<ServiceResponse<Product>> GetProduct(int productId)
+    {
+        return await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>($"https://ecommercefunction.azurewebsites.net/api/{productId}/");
     }
 }

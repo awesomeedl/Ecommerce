@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Ecommerce_Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ecommerce_Function.Services;
+namespace Ecommerce_Function.Services.ProductService;
 
 public class ProductService : IProductService
 {
@@ -20,6 +20,23 @@ public class ProductService : IProductService
         {
             Data = await _dataContext.Products.ToListAsync()
         };
+
+        return response;
+    }
+
+    public async Task<ServiceResponse<Product>> GetProductAsync(int productId)
+    {
+        var response = new ServiceResponse<Product>();
+        var product = await _dataContext.Products.FindAsync(productId);
+        if (product == null)
+        {
+            response.Success = false;
+            response.Message = "Product not found.";
+        }
+        else
+        {
+            response.Data = product;
+        }
 
         return response;
     }

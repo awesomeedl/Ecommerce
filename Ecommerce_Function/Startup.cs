@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Ecommerce_Function;
 using Ecommerce_Function.Services;
+using Ecommerce_Function.Services.ProductService;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
