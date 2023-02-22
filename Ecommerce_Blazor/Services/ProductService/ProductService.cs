@@ -25,6 +25,6 @@ public class ProductService : IProductService
 
     public async Task<ServiceResponse<Product>> GetProduct(int productId)
     {
-        return await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>($"https://ecommercefunction.azurewebsites.net/api/{productId}/");
+        return await _httpClient.GetFromJsonAsync<ServiceResponse<Product>>($"https://ecommercefunction.azurewebsites.net/api/product/{productId}/");
     }
 }
