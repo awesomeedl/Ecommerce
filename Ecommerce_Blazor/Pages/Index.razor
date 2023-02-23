@@ -3,16 +3,3 @@
 <PageTitle>My Shop</PageTitle>
 
 <ProductList/>
-
-@code
-{
-    protected override async Task OnInitializedAsync()
-    {
-        var d = Environment.GetEnvironmentVariables();
-        foreach (var key in d.Keys)
-        {
-            Console.WriteLine($"{key}: {d[key]}");
-        }
-        await base.OnInitializedAsync();
-    }
-}

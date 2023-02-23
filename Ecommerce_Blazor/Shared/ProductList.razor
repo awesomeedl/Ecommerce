@@ -1,4 +1,5 @@
-﻿@inject IProductService ProductService
+﻿@inject IConfiguration Configuration
+@inject IProductService ProductService
 
 @if (ProductService.Products == null || ProductService.Products.Count == 0)
 {
