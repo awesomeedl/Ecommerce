@@ -17,7 +17,10 @@
 
     <ItemGroup>
       <Content Remove="appsettings.json" />
-      <None Include="appsettings.json">
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
