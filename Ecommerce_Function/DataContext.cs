@@ -8,9 +8,7 @@ namespace Ecommerce_Function;
 
 public class DataContext : DbContext
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
-    {
-    }
+    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
     public DbSet<Product> Products { get; set; }
 
@@ -47,6 +45,14 @@ public class DataContext : DbContext
             }
         );
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlite("Data Source=Products.db");
+        }
+    }
 }
 
 // For EF Core cli uses only, has no effect on actual application
@@ -54,10 +60,8 @@ public class DataContextFactory : IDesignTimeDbContextFactory<DataContext>
 {
     public DataContext CreateDbContext(string[] args)
     {
-        var constr = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_ConnectionString");
-        Debug.Assert(!string.IsNullOrEmpty(constr));
         var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-        optionsBuilder.UseSqlServer(constr);
+        optionsBuilder.UseSqlite("Data Source=Products.db");
 
         return new DataContext(optionsBuilder.Options);
     }

@@ -15,10 +15,7 @@ public class Startup : FunctionsStartup
 {
     public override void Configure(IFunctionsHostBuilder builder)
     {
-        var connectionStr = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_ConnectionString");
-        Debug.Assert(!string.IsNullOrEmpty(connectionStr), "Connection string not found");
-        builder.Services.AddDbContext<DataContext>(
-            options => options.UseSqlServer(connectionStr));
+        builder.Services.AddSqlite<DataContext>("Data Source=Products.db");
         builder.Services.AddScoped<IProductService, ProductService>();
     }
 }

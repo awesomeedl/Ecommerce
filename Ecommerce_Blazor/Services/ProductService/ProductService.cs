@@ -4,13 +4,12 @@ namespace Ecommerce_Blazor.Services.ProductService;
 
 public class ProductService : IProductService
 {
-    private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
     private readonly string _baseApiUrl;
 
     public ProductService(HttpClient httpClient, IConfiguration configuration)
     {
-        _configuration = configuration;
+        _baseApiUrl = configuration[_baseApiUrl];
         _httpClient = httpClient;
     }
     
@@ -18,7 +17,6 @@ public class ProductService : IProductService
     
     public async Task GetProducts()
     {
-        Console.WriteLine($"url: {_configuration.GetValue<string>("LocalAPIUrl")}");
         var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>(_baseApiUrl);
         if (result is { Data: { } })
         {

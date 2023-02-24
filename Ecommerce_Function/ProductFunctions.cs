@@ -22,20 +22,24 @@ public class ProductFunctions
     }
 
     [FunctionName("GetProducts")]
-    public async Task<IActionResult> Run1(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product")]
+    public async Task<IActionResult> GetProducts(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product")] 
         HttpRequest req,
         ILogger log)
     {
         var result = await _productService.GetProductsAsync();
-        return new OkObjectResult(result);
+        return result is not null ? new OkObjectResult(result) : new NotFoundResult();
     }
     
     [FunctionName("GetProduct")]
-    public async Task<IActionResult> Run2(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/{id:int}")] HttpRequest req, int id, ILogger log)
+    public async Task<IActionResult> GetProduct(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "product/{id:int}")] 
+        HttpRequest req, 
+        int id, 
+        ILogger log)
     {
         var result = await _productService.GetProductAsync(id);
-        return new OkObjectResult(result);
+
+        return result is not null ? new OkObjectResult(result) : new NotFoundObjectResult(new Product { Id = id });
     }
 }
