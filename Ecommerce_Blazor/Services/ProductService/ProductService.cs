@@ -9,7 +9,7 @@ public class ProductService : IProductService
 
     public ProductService(HttpClient httpClient, IConfiguration configuration)
     {
-        _baseApiUrl = configuration[_baseApiUrl];
+        _baseApiUrl = configuration["BaseAPIUrl"];
         _httpClient = httpClient;
     }
     
