@@ -50,7 +50,7 @@ public class DataContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlite("Data Source=Products.db");
+            optionsBuilder.UseSqlite("Data Source=%HOME%//site//wwwroot//Products.db");
         }
     }
 }

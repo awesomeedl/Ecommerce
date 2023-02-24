@@ -15,7 +15,7 @@ public class Startup : FunctionsStartup
 {
     public override void Configure(IFunctionsHostBuilder builder)
     {
-        builder.Services.AddSqlite<DataContext>("Data Source=Products.db");
+        builder.Services.AddSqlite<DataContext>("Data Source=%HOME%//site//wwwroot//Products.db");
         builder.Services.AddScoped<IProductService, ProductService>();
     }
 }
